@@ -1,0 +1,9 @@
+{
+  "name": " محترف الصور و الفيديو - AI Studio",
+  "description": "منصة تعديل صور احترافية تجمع بين التوليد بالذكاء الاصطناعي، التعديل السحري، والتحسين اليدوي.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "display-capture"
+  ]
+}
