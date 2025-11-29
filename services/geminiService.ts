@@ -2,7 +2,8 @@
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 
 const getAiClient = () => {
-  const apiKey = process.env.API_KEY;
+  // Try getting key from process.env, fallback to localStorage
+  const apiKey = process.env.API_KEY || localStorage.getItem('GEMINI_API_KEY');
   if (!apiKey) {
     throw new Error("مفتاح API غير موجود. يرجى إعداده من القائمة.");
   }
@@ -279,7 +280,7 @@ export const generateVideo = async (prompt: string): Promise<string> => {
   const videoUri = operation.response?.generatedVideos?.[0]?.video?.uri;
   if (!videoUri) throw new Error("فشل توليد الفيديو");
   
-  const apiKey = process.env.API_KEY;
+  const apiKey = process.env.API_KEY || localStorage.getItem('GEMINI_API_KEY');
   const videoRes = await fetch(`${videoUri}&key=${apiKey}`);
   const blob = await videoRes.blob();
   return URL.createObjectURL(blob);
